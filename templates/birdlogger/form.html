@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Signin Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../dist/css/signin.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="container">
+       <form class="form" method="POST" enctype="multipart/form-data" action="{{ action }}">
+	  {% autoescape off %}
+	  {{ form.message }}
+	  <ul class="errors">
+	    {% for error in form.allErrors %}
+	      <li>{{ error }}</li>
+	    {% endfor %}
+	  </ul>
+
+	  {% for field in form %}
+	    {% if field.type == "SubmitField" %}
+	      <div class="form-group">
+		<td>{{ field }}</td>
+	      </div>
+	    {% else %}
+	      <div class="form-inline">
+		<td>{{ field.label }}{% if field.flags.required %}*{% endif %}</td>
+		<div class="col-4">
+		<td>{{ field }}</td>
+		</div>
+	      </div>
+	    {% endif %}
+	  {% endfor %}
+	  {% endautoescape %}
+	  <button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+      
+    </div> <!-- /container -->
+    <!--<div class="container">
+
+      <form class="form-signin" action="/image_download" method="get" >
+        <h2 class="form-signin-heading">Get Post</h2>
+        <label for="name" class="sr-only">Title</label>
+        <input type="name" id="name" class="form-control" required autofocus>
+        <button class="btn btn-lg btn-primary btn-block" input type="submit" value="Submit">Done</button>
+      </form>
+
+    </div> <!-- /container -->
+  </body>
+</html>

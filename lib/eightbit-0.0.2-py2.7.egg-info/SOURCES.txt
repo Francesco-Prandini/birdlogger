@@ -1,0 +1,8 @@
+eightbit.egg-info/PKG-INFO
+eightbit.egg-info/SOURCES.txt
+eightbit.egg-info/dependency_links.txt
+eightbit.egg-info/namespace_packages.txt
+eightbit.egg-info/requires.txt
+eightbit.egg-info/top_level.txt
+eightbit/client/__init__.py
+eightbit/client/client.py

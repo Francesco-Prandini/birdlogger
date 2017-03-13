@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>Bird Logger - API - v1.0</title>
+	<meta name="generator" content="LibreOffice 4.3.3.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2017-03-12T14:02:06.718572349"/>
+	<meta name="" content=""/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="created" content="00:00:00">
+	<meta name="changed" content="2017-03-12T12:42:38.717641243">
+	<meta name="created" content="00:00:00">
+	<meta name="changed" content="2017-03-12T12:07:39.422471461">
+	<!-- Page Content -->
+	<style type="text/css">
+		p { margin-bottom: 0.26cm; color: #333333; font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif; font-size: 10pt; line-height: 142% }
+		h1 { margin-top: 0.53cm; margin-bottom: 0.26cm; color: #333333; font-family: "inherit"; font-size: 27pt; line-height: 110% }
+		h3 { margin-top: 0.53cm; margin-bottom: 0.26cm; font-family: "inherit"; font-size: 18pt; line-height: 110% }
+		a:link { color: #337ab7; background: transparent; text-decoration: none }
+		code { font-family: monospace, monospace }
+		a:visited { color: #337ab7; background: transparent; text-decoration: none }
+	</style>
+</head>
+<body lang="it-IT" text="#333333" link="#337ab7" vlink="#337ab7" bgcolor="#ffffff" dir="ltr" style="background: #ffffff; border: none; padding: 0cm">
+<h1>Bird Logger – API docs v1.0</h1>
+<p><br/>
+<br/>
+
+</p>
+<div id="accordion" dir="ltr">
+	<p><!-- /.row --></p>
+	<div id="headingOne" dir="ltr">
+		<h3><br/>
+<br/>
+
+		</h3>
+		<h3><b>geodata</b><a href="#collapseOne"> </a>
+		</h3>
+	</div>
+	<div id="collapseOne" dir="ltr">
+		<p><code><i>/api/1.0/geodata[?fromDate=DATE1][&amp;toDate=DATE2]</i></code></p>
+		<p><br/>
+<br/>
+
+		</p>
+		<p><a name="__DdeLink__31_937074510"></a><code><font size="3" style="font-size: 12pt"><u><b>Response</b></u></font></code><code>:
+		a GeoJSON data structure or a JSON formatted error message</code></p>
+		<p><br><br><font size="3" style="font-size: 12pt"><u><b>Parameters</b></u></font>:
+				</p>
+		<ul>
+			<li/>
+<p><font color="#1f1c1b"><b>DATE1,DATE2</b></font><font color="#1f1c1b">:
+			(type:</font><font color="#1f1c1b"><i>date</i></font><font color="#1f1c1b">)
+			dates in the format YYYY-MM-DD[-h-m-s] (the eventual missing
+			elements are interpreted as zeros).</font></p>
+		</ul>
+		<p><br/>
+<br/>
+
+		</p>
+		<p><a name="a-jsonerr2"></a><font size="3" style="font-size: 12pt"><u><b>Possible
+		cases</b></u></font>:</p>
+		<ul>
+			<li/>
+<p>Both dates are missing: returns the geodata for all the
+			posts in the database</p>
+			<li/>
+<p>fromDate missing: returns data from the beginning to
+			DATE2</p>
+			<li/>
+<p>toDate missing: returns data from DATE1 on.</p>
+			<li/>
+<p>Else: returns data between DATE1 and DATE1</p>
+		</ul>
+		<p><br/>
+<br/>
+
+		</p>
+		<p><font size="3" style="font-size: 12pt"><span style="font-style: normal"><u><b>Errors</b></u></span></font>:</p>
+		<ul>
+			<li/>
+<p><i>400 – Malformed parameter </i>(DATE1 or DATE2): the
+			parameter passed is not of the correct type</p>
+		</ul>
+		<p><br/>
+<br/>
+
+		</p>
+	</div>
+	<div id="headingTwo" dir="ltr">
+		<h3><br/>
+<br/>
+
+		</h3>
+		<h3>post</h3>
+	</div>
+	<div id="collapseTwo" dir="ltr">
+		<p><code><i>/api/1.0/post?postId=POST_ID</i></code></p>
+		<p><br/>
+<br/>
+
+		</p>
+		<p><code><font size="3" style="font-size: 12pt"><u><b>Response</b></u></font></code><code>:
+		a GeoJSON data structure or a JSON formatted error message</code><br><br/>
+<br/>
+
+		</p>
+		<p><br><font size="3" style="font-size: 12pt"><span style="font-style: normal"><u><b>Parameters</b></u></span></font>:
+				</p>
+		<ul>
+			<li/>
+<p><a name="__DdeLink__16_937074510"></a><b>POST_ID</b>:
+			(type:<i>long</i>,required) The ID of the post to retrieve.</p>
+		</ul>
+		<p><br/>
+<br/>
+
+		</p>
+		<p><font size="3" style="font-size: 12pt"><u><b>Errors</b></u></font>:</p>
+		<ul>
+			<li/>
+<p><i><span style="font-weight: normal">400 – Missing
+			parameter</span></i> <b>postId</b></p>
+			<li/>
+<p><i>400 – Malformed parameter </i><b>postId</b>: the
+			parameter passed is not of the correct type</p>
+			<li/>
+<p><i>404 – File not found</i>: the post <b>POST_ID</b>
+			does not exists<br><br/>
+<br/>
+
+			</p>
+		</ul>
+	</div>
+	<div id="headingThree" dir="ltr">
+		<h3><br/>
+<br/>
+
+		</h3>
+		<h3><a name="__DdeLink__27_937074510"></a><b>image</b></h3>
+	</div>
+	<div id="collapseThree" dir="ltr">
+		<p><code><i>/api/1.0/image?imageId=IMAGE_ID</i></code></p>
+		<p><br/>
+<br/>
+
+		</p>
+		<p><code><font size="3" style="font-size: 12pt"><u><b>Response</b></u></font></code><code>:
+		an image data or a JSON formatted error message</code><br><br/>
+<br/>
+
+		</p>
+		<p><br><font size="3" style="font-size: 12pt"><u><b>Parameters</b></u></font>:
+				</p>
+		<ul>
+			<li/>
+<p style="margin-bottom: 0cm"><a name="__DdeLink__16_9370745101"></a>
+			<b>IMAGE_ID</b>: (type:<i>long</i>,required) The ID of the IMAGE
+			to retrieve.</p>
+		</ul>
+		<p><br/>
+<br/>
+
+		</p>
+		<p><font size="3" style="font-size: 12pt"><u><b>Errors</b></u></font>:</p>
+		<ul>
+			<li/>
+<p><i>400 – Missing parameter</i> <b>imageId</b></p>
+			<li/>
+<p><i>400 – Malformed parameter</i> <b>imageId</b>: the
+			parameter passed is not of the correct type</p>
+			<li/>
+<p><i>404 – File not found</i>: the image <b>IMAGE_ID</b>
+			does not exists<!-- /.container --></p>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

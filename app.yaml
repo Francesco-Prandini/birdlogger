@@ -1,0 +1,23 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /dist/css
+  static_dir: dist/css
+- url: /dist/js
+  static_dir: dist/js
+- url: /borders\.kml
+  static_files: borders.kml
+  upload: borders\.kml
+  
+- url: /.*
+  script: main.app
+  secure: always
+
+  
+libraries:
+- name: ssl
+  version: latest
+- name: PIL
+  version: latest
